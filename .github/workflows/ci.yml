@@ -262,8 +262,6 @@ jobs:
             [Changelog](${{ steps.changelog.outputs.link }}) |
             [Milestone](${{ steps.milestone.outputs.link }})
           files: |
-            artifacts/*.apk
-            artifacts/*.aab
             artifacts/*.zip
             artifacts/*.sha256sum
           fail_on_unmatched_files: true

@@ -182,6 +182,8 @@ jobs:
     needs:
       - release-github
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # https://github.com/softprops/action-gh-release/issues/236
     steps:
       - uses: actions/checkout@v4
         with:

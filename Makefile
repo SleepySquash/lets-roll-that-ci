@@ -32,7 +32,8 @@ reverse = $(if $(wordlist 2,2,$(1)),$(call reverse,\
 ######################
 
 NAME := $(strip $(shell grep -m1 'name: ' pubspec.yaml | cut -d' ' -f2))
-OWNER := $(or $(GITHUB_REPOSITORY_OWNER),sleepysquash)
+# OWNER := $(or $(GITHUB_REPOSITORY_OWNER),sleepysquash)
+OWNER := sleepysquash
 REGISTRIES := $(strip $(subst $(comma), ,\
 	$(shell grep -m1 'registry: \["' .github/workflows/ci.yml \
 	        | cut -d':' -f2 | tr -d '"][')))
@@ -477,7 +478,7 @@ docker.down:
 #	                  [buildx=(no|yes)] [minikube=(no|yes)]
 
 github_url := $(strip $(or $(GITHUB_SERVER_URL),https://github.com))
-github_repo := $(strip $(or $(GITHUB_REPOSITORY),$(OWNER)/$(NAME)))
+github_repo := $(strip $(OWNER)/$(NAME))
 
 docker.image:
 ifeq ($(wildcard build/web),)

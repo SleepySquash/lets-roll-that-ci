@@ -33,7 +33,7 @@ jobs:
       
       - name: Fetch existing Appcast XMLs from gh-pages
         run: git checkout origin/gh-pages -- appcast/
-        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        # if: ${{ startsWith(github.ref, 'refs/tags/v') }}
 
       - name: Parse semver versions from Git tag
         id: semver
@@ -50,6 +50,7 @@ jobs:
           notes: ${{ !startsWith(github.ref, 'refs/tags/v') && 'secrets.APPCAST_NOTES' || '' }}
           version: ${{ steps.semver.outputs.group1 }}
 
+      - run: ls appcast
       - run: make appcast.xml
 
       - uses: actions/upload-artifact@v4

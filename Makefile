@@ -331,6 +331,7 @@ endif
 
 appcast.xml:
 	@rm $(or $(out),appcast/appcast.xml)
+	echo "$(call reverse,$(wildcard $(or $(from),appcast)/*.xml))"
 	@echo "<?xml version=\"1.0\" encoding=\"utf-8\"?><rss version=\"2.0\" xmlns:sparkle=\"http://www.andymatuschak.org/xml-namespaces/sparkle\"><channel>$(or $(items),$(foreach xml,$(call reverse,$(wildcard $(or $(from),appcast)/*.xml)),$(shell cat $(xml))))</channel></rss>"\
 	> $(or $(out),appcast/appcast.xml)
 

@@ -1,1 +1,1 @@
-Reimplemented the CI jobs and Makefile commands
+Minor improvement of appcast file
